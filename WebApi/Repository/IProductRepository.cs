@@ -4,10 +4,10 @@ namespace WebApi.Repository
 {
     public interface IProductRepository
     {
-        Task Add(ProductModel product);
-        Task Update(ProductModel product);
-        Task Delete(ProductModel product);
-        Task<ProductModel> GetById(int id);
-        Task<List<ProductModel>> List();
+        Task Add(ProductModel product, CancellationToken cancellationToken);
+        Task Update(ProductModel product, CancellationToken cancellationToken);
+        Task Delete(ProductModel product, CancellationToken cancellationToken);
+        Task<ProductModel> GetById(int id, CancellationToken cancellationToken);
+        Task<List<ProductModel>> List(CancellationToken cancellationToken);
     }
 }

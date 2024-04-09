@@ -31,7 +31,7 @@ namespace WebApi.Config
 
         public string GetConnectionString()
         {
-            return "Server=DESKTOP-7V86B4M;Database=MeuFeudo;Integrated Security=True;TrustServerCertificate=True"; ;
+            return "Server=DESKTOP-7V86B4M;Database=MeuFeudo;Integrated Security=True;TrustServerCertificate=True";
         }
     }
 }

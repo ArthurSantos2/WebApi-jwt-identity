@@ -13,29 +13,59 @@ namespace WebApi.Repository
             _options = new DbContextOptions<BaseContext>();
         }
 
-        public async Task Add(ProductModel product)
+        public async Task Add(ProductModel product, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+            
+            using (var data = new BaseContext(_options))
+            {
+                data.Set<ProductModel>().Add(product);
+                await data.SaveChangesAsync();
+            }
+
+            await Task.CompletedTask;
         }
 
-        public async Task Delete(ProductModel product)
+        public async Task Delete(ProductModel product, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+
+            using (var data = new BaseContext(_options))
+            {
+                data.Set<ProductModel>().Remove(product);
+                await data.SaveChangesAsync();
+            }
+
+            await Task.CompletedTask;
         }
 
-        public async Task<ProductModel> GetById(int id)
+        public async Task<ProductModel> GetById(int id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            using (var data = new BaseContext(_options))
+            {
+                return await data.Set<ProductModel>().FindAsync(id,cancellationToken);
+            }
         }
 
-        public async Task<List<ProductModel>> List()
+        public async Task<List<ProductModel>> List(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            using (var data = new BaseContext(_options))
+            {
+                return await data.Set<ProductModel>().ToListAsync(cancellationToken);
+            }
         }
 
-        public async Task Update(ProductModel product)
+        public async Task Update(ProductModel product, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+
+            using (var data = new BaseContext(_options))
+            {
+                data.Set<ProductModel>().Update(product);
+                await data.SaveChangesAsync();
+            }
+
+            await Task.CompletedTask;
         }
     }
 }
