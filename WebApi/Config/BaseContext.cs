@@ -15,7 +15,7 @@ namespace WebApi.Config
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ProductModel>().ToTable("AspNetUsers").HasKey(d => d.ProductId);
+            builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(d => d.Id);
 
             base.OnModelCreating(builder);
         }

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Auth;
@@ -21,6 +22,9 @@ namespace WebApi.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+        [AllowAnonymous]
+        [HttpPost("/api/CreateToken")]
         public async Task<IActionResult> CreateToken([FromBody] LoginRequest request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))

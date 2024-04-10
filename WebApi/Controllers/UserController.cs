@@ -24,7 +24,6 @@ namespace WebApi.Controllers
 
 
         [AllowAnonymous]
-        [Produces("application/json")]
         [HttpPost("/api/AdicionaUsuario")]
         public async Task<IActionResult> AdicionaUsuario([FromBody] AddUserRequest login)
         {

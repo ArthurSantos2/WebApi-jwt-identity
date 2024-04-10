@@ -19,14 +19,12 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("/api/List")]
-        [Produces("application/json")]
         public async Task<object> List(CancellationToken cancellationToken)
         {
             return await _productRepository.List(cancellationToken);
         }
 
         [HttpPost("/api/Add")]
-        [Produces("application/json")]
         public async Task<object> Add(ProductModel product, CancellationToken cancellationToken)
         {
             try
@@ -42,7 +40,6 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("/api/Update")]
-        [Produces("application/json")]
         public async Task<object> Update(ProductModel product, CancellationToken cancellationToken)
         {
             try
@@ -59,7 +56,6 @@ namespace WebApi.Controllers
 
 
         [HttpGet("/api/GetEntityById")]
-        [Produces("application/json")]
         public async Task<object> GetEntityById(int id, CancellationToken cancellationToken)
         {
             return await _productRepository.GetById(id, cancellationToken);
