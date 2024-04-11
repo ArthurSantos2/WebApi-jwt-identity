@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Auth;
-using WebApi.Domain.Entities;
-using WebApi.Models;
+using WebApi.Application.Auth;
+using WebApi.Application.Entities;
+using WebApi.Domain.Models;
 
 namespace WebApi.Controllers
 {

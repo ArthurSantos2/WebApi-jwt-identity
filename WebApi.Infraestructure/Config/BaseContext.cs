@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Application.Entities;
 using WebApi.Domain.Entities;
 
 namespace WebApi.Infraestructure.Config

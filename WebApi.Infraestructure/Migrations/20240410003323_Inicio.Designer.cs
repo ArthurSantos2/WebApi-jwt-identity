@@ -9,7 +9,7 @@ using WebApi.Infraestructure.Config;
 
 #nullable disable
 
-namespace WebApi.Migrations
+namespace WebApi.Infraestructure.Migrations
 {
     [DbContext(typeof(BaseContext))]
     [Migration("20240410003323_Inicio")]

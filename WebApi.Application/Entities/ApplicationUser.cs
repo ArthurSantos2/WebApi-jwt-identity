@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApi.Domain.Entities
+
+namespace WebApi.Application.Entities
 {
     public class ApplicationUser : IdentityUser
     {
