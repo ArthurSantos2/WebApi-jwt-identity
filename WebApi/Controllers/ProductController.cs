@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Entities;
-using WebApi.Repository;
+using WebApi.Domain.Entities;
+using WebApi.Infraestructure.Repository;
 
 namespace WebApi.Controllers
 {
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             {
                 await _productRepository.Add(product, cancellationToken);
             }
-            catch (Exception ERRO)
+            catch (Exception ex)
             {
 
             }
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
                 await _productRepository.Delete(product, cancellationToken);
 
             }
-            catch (Exception ERRO)
+            catch (Exception ex)
             {
                 return false;
             }

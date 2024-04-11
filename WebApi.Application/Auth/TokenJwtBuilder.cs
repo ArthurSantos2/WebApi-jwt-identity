@@ -2,7 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace WebApi.Auth
+namespace WebApi.Application.Auth
 {
     public class TokenJwtBuilder
     {
@@ -10,7 +10,7 @@ namespace WebApi.Auth
         private string subject = "";
         private string issuer = "";
         private string audience = "";
-        private Dictionary<string,string> claims = new Dictionary<string,string>();
+        private Dictionary<string, string> claims = new Dictionary<string, string>();
         private int expiryInMinutes = 5;
 
         public TokenJwtBuilder AddSecurityKey(SecurityKey securityKey)
@@ -33,7 +33,7 @@ namespace WebApi.Auth
             this.audience = audience;
             return this;
         }
-        public TokenJwtBuilder AddClaims(Dictionary<string,string> claims)
+        public TokenJwtBuilder AddClaims(Dictionary<string, string> claims)
         {
             this.claims = claims;
             return this;
@@ -46,16 +46,16 @@ namespace WebApi.Auth
 
         private void EnsureArguments()
         {
-            if (this.securityKey == null)
+            if (securityKey == null)
                 throw new ArgumentNullException("Security Key");
 
-            if (string.IsNullOrEmpty(this.subject))
+            if (string.IsNullOrEmpty(subject))
                 throw new ArgumentNullException("Subject");
 
-            if (string.IsNullOrEmpty(this.issuer))
+            if (string.IsNullOrEmpty(issuer))
                 throw new ArgumentNullException("Issuer");
 
-            if (string.IsNullOrEmpty(this.audience))
+            if (string.IsNullOrEmpty(audience))
                 throw new ArgumentNullException("Audience");
         }
 
@@ -65,17 +65,17 @@ namespace WebApi.Auth
 
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub,this.subject),
+                new Claim(JwtRegisteredClaimNames.Sub,subject),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             }.Union(this.claims.Select(item => new Claim(item.Key, item.Value)));
 
             var token = new JwtSecurityToken(
-                issuer: this.issuer,
-                audience: this.audience,
+                issuer: issuer,
+                audience: audience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
                 signingCredentials: new SigningCredentials(
-                    this.securityKey,
+                    securityKey,
                     SecurityAlgorithms.Aes128CbcHmacSha256)
                 );
             return new TokenJwt(token);

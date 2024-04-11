@@ -1,6 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 
-namespace WebApi.Auth
+namespace WebApi.Application.Auth
 {
     public class TokenJwt
     {
@@ -13,6 +13,6 @@ namespace WebApi.Auth
 
         public DateTime ValidTo => _jwtSecurityKey.ValidTo;
 
-        public string value => new JwtSecurityTokenHandler().WriteToken(_jwtSecurityKey);   
+        public string value => new JwtSecurityTokenHandler().WriteToken(_jwtSecurityKey);
     }
 }

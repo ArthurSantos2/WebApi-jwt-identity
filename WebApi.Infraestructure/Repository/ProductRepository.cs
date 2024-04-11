@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using WebApi.Config;
-using WebApi.Entities;
+using WebApi.Domain.Entities;
+using WebApi.Infraestructure.Config;
 
-namespace WebApi.Repository
+namespace WebApi.Infraestructure.Repository
 {
     public class ProductRepository : IProductRepository
     {
@@ -16,7 +15,7 @@ namespace WebApi.Repository
         public async Task Add(ProductModel product, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            
+
             using (var data = new BaseContext(_options))
             {
                 data.Set<ProductModel>().Add(product);
@@ -43,7 +42,7 @@ namespace WebApi.Repository
         {
             using (var data = new BaseContext(_options))
             {
-                return await data.Set<ProductModel>().FindAsync(id,cancellationToken);
+                return await data.Set<ProductModel>().FindAsync(id, cancellationToken);
             }
         }
 

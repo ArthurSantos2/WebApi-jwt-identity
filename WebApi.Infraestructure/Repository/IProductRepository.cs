@@ -1,6 +1,7 @@
-﻿using WebApi.Entities;
+﻿
+using WebApi.Domain.Entities;
 
-namespace WebApi.Repository
+namespace WebApi.Infraestructure.Repository
 {
     public interface IProductRepository
     {

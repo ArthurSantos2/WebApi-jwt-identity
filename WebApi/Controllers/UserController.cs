@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
-using WebApi.Entities;
-using WebApi.Models;
+using WebApi.Domain.Entities;
+using WebApi.Domain.Models;
 
 namespace WebApi.Controllers
 {

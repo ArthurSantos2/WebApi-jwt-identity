@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Entities
+namespace WebApi.Domain.Entities
 {
     public class ProductModel
     {

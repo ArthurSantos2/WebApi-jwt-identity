@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Entities;
+using WebApi.Domain.Entities;
 
-namespace WebApi.Config
+namespace WebApi.Infraestructure.Config
 {
     public class BaseContext : IdentityDbContext<ApplicationUser>
     {
         public BaseContext(DbContextOptions<BaseContext> options) : base(options)
         {
-                
+
         }
 
         public DbSet<ProductModel> Products { get; set; }
